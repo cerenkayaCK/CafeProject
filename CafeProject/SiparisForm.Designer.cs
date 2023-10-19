@@ -109,12 +109,13 @@
             nudAdet.DisplayMember = "1";
             nudAdet.FormattingEnabled = true;
             nudAdet.Items.AddRange(new object[] { "1" });
-            nudAdet.Location = new Point(193, 42);
-            nudAdet.MinimumSize = new Size(1, 0);
+            nudAdet.Location = new Point(183, 42);
+            nudAdet.MaxLength = 1000;
             nudAdet.Name = "nudAdet";
-            nudAdet.Size = new Size(81, 22);
+            nudAdet.RightToLeft = RightToLeft.No;
+            nudAdet.Size = new Size(91, 22);
             nudAdet.TabIndex = 3;
-            nudAdet.ValueMember = "1";
+            nudAdet.ValueMember = "0";
             // 
             // cmoUrun
             // 
