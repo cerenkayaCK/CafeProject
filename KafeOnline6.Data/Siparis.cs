@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KafeOnline6.Data
 {
-    internal class Siparis
+    public class Siparis
     {
         public int MasaNo { get; set; }
         public SiparisDurum Durum { get; set; } = SiparisDurum.Aktif;

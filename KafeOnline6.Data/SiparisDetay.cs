@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KafeOnline6.Data
 {
-    internal class SiparisDetay
+    public class SiparisDetay
     {
         public string UrunAd { get; set; } = "";
 

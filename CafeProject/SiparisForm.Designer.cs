@@ -28,22 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             label1 = new Label();
             label2 = new Label();
             btnDetayEkle = new Button();
             btnSiparisİptal = new Button();
             btnOdemeAl = new Button();
-            nudAdet = new ComboBox();
-            cmoUrun = new ComboBox();
+            cboUrun = new ComboBox();
             btnAnasayfayaDon = new Button();
             btnMasaTasi = new Button();
             label3 = new Label();
             cmoMasaNo = new ComboBox();
             dgvDetaylar = new DataGridView();
-            lblTutar = new Label();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
             lblOdemeTutari = new Label();
+            lbll = new Label();
             lblMasaNo = new Label();
+            nudAdet = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)dgvDetaylar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudAdet).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -65,7 +73,6 @@
             label2.Size = new Size(36, 14);
             label2.TabIndex = 2;
             label2.Text = "Adet";
-            label2.Click += label2_Click;
             // 
             // btnDetayEkle
             // 
@@ -76,6 +83,7 @@
             btnDetayEkle.TabIndex = 4;
             btnDetayEkle.Text = "Ekle";
             btnDetayEkle.UseVisualStyleBackColor = true;
+            btnDetayEkle.Click += btnDetayEkle_Click;
             // 
             // btnSiparisİptal
             // 
@@ -89,6 +97,7 @@
             btnSiparisİptal.TabIndex = 12;
             btnSiparisİptal.Text = "Sipariş İptal";
             btnSiparisİptal.UseVisualStyleBackColor = false;
+            btnSiparisİptal.Click += btnSiparisİptal_Click;
             // 
             // btnOdemeAl
             // 
@@ -102,30 +111,17 @@
             btnOdemeAl.TabIndex = 13;
             btnOdemeAl.Text = "Ödeme Al";
             btnOdemeAl.UseVisualStyleBackColor = false;
+            btnOdemeAl.Click += btnOdemeAl_Click;
             // 
-            // nudAdet
+            // cboUrun
             // 
-            nudAdet.Anchor = AnchorStyles.Top;
-            nudAdet.DisplayMember = "1";
-            nudAdet.FormattingEnabled = true;
-            nudAdet.Items.AddRange(new object[] { "1" });
-            nudAdet.Location = new Point(183, 42);
-            nudAdet.MaxLength = 1000;
-            nudAdet.Name = "nudAdet";
-            nudAdet.RightToLeft = RightToLeft.No;
-            nudAdet.Size = new Size(91, 22);
-            nudAdet.TabIndex = 3;
-            nudAdet.ValueMember = "0";
-            // 
-            // cmoUrun
-            // 
-            cmoUrun.Anchor = AnchorStyles.Top;
-            cmoUrun.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmoUrun.FormattingEnabled = true;
-            cmoUrun.Location = new Point(34, 43);
-            cmoUrun.Name = "cmoUrun";
-            cmoUrun.Size = new Size(117, 22);
-            cmoUrun.TabIndex = 1;
+            cboUrun.Anchor = AnchorStyles.Top;
+            cboUrun.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboUrun.FormattingEnabled = true;
+            cboUrun.Location = new Point(34, 43);
+            cboUrun.Name = "cboUrun";
+            cboUrun.Size = new Size(117, 22);
+            cboUrun.TabIndex = 1;
             // 
             // btnAnasayfayaDon
             // 
@@ -139,6 +135,7 @@
             btnAnasayfayaDon.TabIndex = 14;
             btnAnasayfayaDon.Text = "ANASAYFAYA DÖN";
             btnAnasayfayaDon.UseVisualStyleBackColor = false;
+            btnAnasayfayaDon.Click += btnAnasayfayaDon_Click;
             // 
             // btnMasaTasi
             // 
@@ -150,6 +147,7 @@
             btnMasaTasi.TabIndex = 7;
             btnMasaTasi.Text = "TAŞI";
             btnMasaTasi.UseVisualStyleBackColor = false;
+            btnMasaTasi.Click += btnMasaTasi_Click;
             // 
             // label3
             // 
@@ -173,35 +171,79 @@
             // 
             // dgvDetaylar
             // 
+            dgvDetaylar.AllowUserToAddRows = false;
+            dgvDetaylar.AllowUserToDeleteRows = false;
             dgvDetaylar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvDetaylar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDetaylar.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvDetaylar.BackgroundColor = SystemColors.ActiveBorder;
             dgvDetaylar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDetaylar.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
             dgvDetaylar.GridColor = SystemColors.InactiveCaption;
             dgvDetaylar.Location = new Point(30, 98);
+            dgvDetaylar.MultiSelect = false;
             dgvDetaylar.Name = "dgvDetaylar";
+            dgvDetaylar.ReadOnly = true;
+            dgvDetaylar.RowHeadersVisible = false;
             dgvDetaylar.RowTemplate.Height = 25;
+            dgvDetaylar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDetaylar.Size = new Size(373, 271);
             dgvDetaylar.TabIndex = 8;
+            dgvDetaylar.KeyDown += dgvDetaylar_KeyDown;
             // 
-            // lblTutar
+            // Column1
             // 
-            lblTutar.Anchor = AnchorStyles.Right;
-            lblTutar.AutoSize = true;
-            lblTutar.Location = new Point(580, 250);
-            lblTutar.Name = "lblTutar";
-            lblTutar.Size = new Size(51, 14);
-            lblTutar.TabIndex = 11;
-            lblTutar.Text = " ₺ 0.00";
+            Column1.DataPropertyName = "UrunAd";
+            dataGridViewCellStyle1.Format = "c2";
+            Column1.DefaultCellStyle = dataGridViewCellStyle1;
+            Column1.HeaderText = "Ürün Ad";
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            Column2.DataPropertyName = "BirimFiyat";
+            dataGridViewCellStyle2.Format = "c2";
+            Column2.DefaultCellStyle = dataGridViewCellStyle2;
+            Column2.HeaderText = "Birim Fiyat";
+            Column2.Name = "Column2";
+            Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            Column3.DataPropertyName = "Adet";
+            Column3.HeaderText = "Adet";
+            Column3.Name = "Column3";
+            Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            Column4.DataPropertyName = "TutarTl";
+            dataGridViewCellStyle3.Format = "c2";
+            Column4.DefaultCellStyle = dataGridViewCellStyle3;
+            Column4.HeaderText = "Tutar";
+            Column4.Name = "Column4";
+            Column4.ReadOnly = true;
             // 
             // lblOdemeTutari
             // 
             lblOdemeTutari.Anchor = AnchorStyles.Right;
             lblOdemeTutari.AutoSize = true;
-            lblOdemeTutari.Location = new Point(429, 250);
+            lblOdemeTutari.Location = new Point(580, 250);
             lblOdemeTutari.Name = "lblOdemeTutari";
-            lblOdemeTutari.Size = new Size(99, 14);
-            lblOdemeTutari.TabIndex = 10;
-            lblOdemeTutari.Text = "ÖDEME TUTARI";
+            lblOdemeTutari.Size = new Size(51, 14);
+            lblOdemeTutari.TabIndex = 11;
+            lblOdemeTutari.Text = " ₺ 0.00";
+            // 
+            // lbll
+            // 
+            lbll.Anchor = AnchorStyles.Right;
+            lbll.AutoSize = true;
+            lbll.Location = new Point(423, 250);
+            lbll.Name = "lbll";
+            lbll.Size = new Size(99, 14);
+            lbll.TabIndex = 10;
+            lbll.Text = "ÖDEME TUTARI";
             // 
             // lblMasaNo
             // 
@@ -215,21 +257,30 @@
             lblMasaNo.Text = "00";
             lblMasaNo.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // nudAdet
+            // 
+            nudAdet.Location = new Point(193, 42);
+            nudAdet.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nudAdet.Name = "nudAdet";
+            nudAdet.Size = new Size(82, 22);
+            nudAdet.TabIndex = 15;
+            nudAdet.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
             // SiparisForm
             // 
             AutoScaleDimensions = new SizeF(8F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(675, 402);
+            Controls.Add(nudAdet);
             Controls.Add(lblMasaNo);
+            Controls.Add(lbll);
             Controls.Add(lblOdemeTutari);
-            Controls.Add(lblTutar);
             Controls.Add(dgvDetaylar);
             Controls.Add(cmoMasaNo);
             Controls.Add(label3);
             Controls.Add(btnMasaTasi);
             Controls.Add(btnAnasayfayaDon);
-            Controls.Add(cmoUrun);
-            Controls.Add(nudAdet);
+            Controls.Add(cboUrun);
             Controls.Add(btnOdemeAl);
             Controls.Add(btnSiparisİptal);
             Controls.Add(btnDetayEkle);
@@ -241,6 +292,7 @@
             StartPosition = FormStartPosition.CenterParent;
             Text = "Masa 0";
             ((System.ComponentModel.ISupportInitialize)dgvDetaylar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudAdet).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -252,15 +304,19 @@
         private Button btnDetayEkle;
         private Button btnSiparisİptal;
         private Button btnOdemeAl;
-        private ComboBox nudAdet;
-        private ComboBox cmoUrun;
+        private ComboBox cboUrun;
         private Button btnAnasayfayaDon;
         private Button btnMasaTasi;
         private Label label3;
         private ComboBox cmoMasaNo;
         private DataGridView dgvDetaylar;
-        private Label lblTutar;
         private Label lblOdemeTutari;
+        private Label lbll;
         private Label lblMasaNo;
+        private NumericUpDown nudAdet;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
     }
 }

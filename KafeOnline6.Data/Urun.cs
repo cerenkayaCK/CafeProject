@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KafeOnline6.Data
 {
-    internal class Urun
+    public class Urun
     {
         public string UrunAd { get; set; } = string.Empty;
         public decimal BirimFiyat { get; set; }
